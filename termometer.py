@@ -1,20 +1,28 @@
 # se abren las bibliotecas necesarias para los dispositivos
 from gpiozero import MCP3008
 from time import sleep
+import sys
+import datetime
+from datetime import date
 
 #inicia el método añadir archivo
-def añadir_archivo(a,b,c):
+def añadir_dato(a,b,c):
+    
     f = open("registro.dat",'a')
-    f.write('{} {} {}'.format(a,b,c))
     f.write('\n')
-    f.write(str(a))
-    f.write(' ')
-    f.write(str(b))
-    f.write(' ')
-    f.write(str(c))
+    f.write('{} {} {} {}'.format(datetime.datetime.now().time(),a,b,c))
+    f.close()
+    
+def añadir_fecha():
+    f =open("registro.dat",'a')
+    f.write('\n')
+    f.write('\n')
+    f.write('{}'.format(date.today()))	# Asigno la fecha a hoy
+    f.write('\n')
     f.close()
 
-
+# inicia funci{on principal
+añadir_fecha()
 # Ajusta el número del canal y el chip SPI selecciona el dispositivo. / Set up channel number and SPI chip select device
 ambiente = MCP3008(channel=0)
 salida_colector = MCP3008(channel = 1)
@@ -26,11 +34,15 @@ while True:
     c = round((salida_torre.value * 3.3) * 100, 2)
 
     # se guarda en el archivo .dat
-    añadir_archivo(a,b,c)
+    añadir_dato(a,b,c)
 
 
     # Muestra en pantalla los valores obtenidos / Print both temperatures
     print('{} {} {}'.format(a, b, c))
 
     # Espera 60 segundos para la siguiente lectura. / Wait 60 seconds for the next read
-    sleep(60)  
+    sleep(60)
+
+
+
+
