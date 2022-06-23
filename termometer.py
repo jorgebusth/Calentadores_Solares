@@ -34,7 +34,7 @@ ambiente = MCP3008(channel=0)
 salida_colector = MCP3008(channel = 1)
 salida_torre = MCP3008(channel = 2)
 i=0
-while (i<=300):
+while (i < 300):
     # Covierte el voltaje analógico a digital y hace la conversión a celcius / Converts ACD voltage to temperature in Celsius
     a = round((ambiente.value * 3.3) * 100, 2)
     b = round((salida_colector.value * 3.3) * 100, 2)
