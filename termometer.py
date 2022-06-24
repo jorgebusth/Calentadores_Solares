@@ -23,7 +23,7 @@ def añadir_fecha():
 
 def añadir_encabezado():
     f = open("registro.dat",'a')
-    f.write('minuto ambiente colector torre\n')
+    f.write('indice ambiente colector torre')
     f.close()
 
 # inicia funci{on principal
@@ -52,4 +52,4 @@ while (i < 300):
     sleep(60)
 
 añadir_fecha()
-sys.exit("Se han registrado 300 minutos. Fin del programa.")
+sys.exit("Se han registrado 300 minutos. Los ajos deben estar listos. Fin del programa.")
